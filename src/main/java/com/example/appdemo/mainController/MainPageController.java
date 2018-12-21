@@ -15,6 +15,6 @@ public class MainPageController {
     @GET
     @RequestMapping(value = {"/", "/index"})
     public String showMainPage() {
-        return "index";
+        return "index1";
     }
 }

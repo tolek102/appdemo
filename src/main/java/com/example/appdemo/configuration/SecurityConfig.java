@@ -41,26 +41,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/register").permitAll()
-                .antMatchers("/adduser").permitAll()
-                .antMatchers("/admin").hasAuthority("ROLE_ADMIN")
+                .antMatchers(SecurityParam.PERMITTED_TO_ALL).permitAll()
+                .antMatchers(SecurityParam.PERMITTED_ONLY_TO_ADMIN).hasAuthority(SecurityParam.ROLE_ADMIN)
                 .anyRequest().authenticated()
                 .and().csrf().disable()
                 .formLogin()
-                .loginPage("/login")
-                .failureUrl("/login?error=true")
-                .defaultSuccessUrl("/")
-                .usernameParameter("email")
-                .passwordParameter("password")
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/")
-                .and().exceptionHandling().accessDeniedPage("/denied");
+                .loginPage(SecurityParam.LOGIN_PAGE)
+                .failureUrl(SecurityParam.FAILURE_URL)
+                .defaultSuccessUrl(SecurityParam.SUCCESS_URL)
+                .usernameParameter(SecurityParam.EMAIL)
+                .passwordParameter(SecurityParam.PASSWORD)
+                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher(SecurityParam.LOGOUT_URL))
+                .logoutSuccessUrl(SecurityParam.SUCCESS_URL)
+                .and().exceptionHandling().accessDeniedPage(SecurityParam.ACCESS_DENIED_URL);
     }
 
     public void configure(WebSecurity webSecurity) throws Exception {
         webSecurity.ignoring()
-                .antMatchers("/resources/**" , "/statics/**", "/css/**", "/js/**", "/images/**", "/incl/**");
+                .antMatchers(SecurityParam.WEB_SECUTITY_IGNORING);
     }
 }
