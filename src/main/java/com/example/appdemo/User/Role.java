@@ -9,6 +9,8 @@ import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+//TODO change Role to enum
+
 @Entity
 @Getter
 @Setter
@@ -18,6 +20,7 @@ public class Role {
     @GeneratedValue
     @Column(name = "role_id")
     private int id;
+
     @NotNull
     private String role;
 }
