@@ -7,6 +7,6 @@
 <title>TITLE_TITLE_TITLE</title>
 </head>
 <body>
-<h1>BLA BLA BLA 1</h1>
+<h1> <3 KOCHAM MOJE KOCHANIE <3</h1>
 </body>
 </html>

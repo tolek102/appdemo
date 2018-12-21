@@ -58,6 +58,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     public void configure(WebSecurity webSecurity) throws Exception {
         webSecurity.ignoring()
-                .antMatchers(SecurityParam.WEB_SECUTITY_IGNORING);
+                .antMatchers(SecurityParam.WEB_SECURITY_IGNORE_PATH);
     }
 }

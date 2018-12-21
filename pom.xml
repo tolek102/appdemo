@@ -90,6 +90,12 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
+
+		<!--LOMBOCK-->
+		<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
