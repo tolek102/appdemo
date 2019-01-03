@@ -1,0 +1,4 @@
+jeœli tego tu nie ma to wali b³êdami takimi jak:
+org.apache.jasper.JasperException: The absolute uri: [http://www.springframework.org/tags] cannot be resolved in either web.xml or the jar files deployed with this application
+
+itp. ogólnie wszystkie po kolei z plików *.jsp chc¹cych wo³aæ taglib <%@ taglib prefix="s"  uri="http://www.springframework.org/tags" %>
