@@ -26,16 +26,22 @@ public class UserRegisterValidator implements Validator {
 
         //TODO use && with 2 conditions in one if statement
         if (!user.getEmail().equals(null)){
-            if (AppdemoUtils.checkEmailOrPassword(AppDemoConstants.EMAIL_PATTERN, user.getEmail())) {
+            if (!AppdemoUtils.checkEmailOrPassword(AppDemoConstants.EMAIL_PATTERN, user.getEmail())) {
                 errors.rejectValue("email", "error.userEmailIsNotMatch");
             }
         }
 
         //TODO use && with 2 conditions in one if statement
         if (!user.getPassword().equals(null)){
-            if (AppdemoUtils.checkEmailOrPassword(AppDemoConstants.PASSWORD_PATTERN, user.getPassword())) {
+            if (!AppdemoUtils.checkEmailOrPassword(AppDemoConstants.PASSWORD_PATTERN, user.getPassword())) {
                 errors.rejectValue("password", "error.userPasswordIsNotMach");
             }
+        }
+    }
+
+    public void validateEmailExist(User user, Errors errors){
+        if (user != null) {
+            errors.rejectValue("email", "error.userEmailExist");
         }
     }
 }

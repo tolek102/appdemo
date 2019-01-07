@@ -31,7 +31,8 @@ public class User {
     private String password;
     @NotNull
     private String name;
-    @NotNull // (name = "last_name")
+    @NotNull
+    @Column(name = "last_name")
     private String lastName;
     @NotNull
     private int active;
