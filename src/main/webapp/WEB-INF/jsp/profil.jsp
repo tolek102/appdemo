@@ -78,5 +78,16 @@
 
 </table>
 
+<table width="500" border="0" cellpadding="4" cellspacing="1" align="center">
+
+	<tr>
+		<td align="center">
+			<input type="button" value="<s:message code="button.zmianaHasla"/>"
+					onclick="window.location.href='${pageContext.request.contextPath}/editpassword'"/>
+		</td>
+	</tr>
+
+</table>
+
 </body>
 </html>
