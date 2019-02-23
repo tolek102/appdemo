@@ -45,6 +45,9 @@ public class User {
     @Transient  //przy operacjach na bazie danych będzie pomijane
     private String operationType;
 
+    @Transient
+    private int roleNr;
+
 }
 
 
