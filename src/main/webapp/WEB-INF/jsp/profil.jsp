@@ -85,6 +85,10 @@
 			<input type="button" value="<s:message code="button.zmianaHasla"/>"
 					onclick="window.location.href='${pageContext.request.contextPath}/editpassword'"/>
 		</td>
+    <td align="center">
+      <input type="button" value="<s:message code="button.edycjaProfilu"/>"
+          onclick="window.location.href='${pageContext.request.contextPath}/editprofil'"/>
+    </td>
 	</tr>
 
 </table>

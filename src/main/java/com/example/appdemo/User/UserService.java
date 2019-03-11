@@ -42,4 +42,10 @@ public class UserService implements UserServiceInterface {
     public void updateUserPassword(final String newPassword, final String email) {
         userRepository.updateUserPassword(bCryptPasswordEncoder.encode(newPassword), email);
     }
+
+    @Override
+    public void updateUserProfile(final String newName, final String newLastName, final String newEmail, final int id) {
+        userRepository.updateUserProfile(newName, newLastName, newEmail, id);
+
+    }
 }
