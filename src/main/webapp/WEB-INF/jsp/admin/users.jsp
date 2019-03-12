@@ -22,6 +22,7 @@ function defaultTrBg(row){
 <body>
 <%@include file="/WEB-INF/incl/menu.app" %>
 <title><s:message code="menu.users"/></title>
+<c:set var="licznik" value="${recordStartCounter }"/>
 <div align="center">
 <table width="1000" border="0" cellpadding="6" cellspacing="0">
 	<tr bgcolor="#ffddcc">
@@ -35,8 +36,9 @@ function defaultTrBg(row){
 		<td width="50"></td>
 	</tr>
 	<c:forEach var="u" items="${userList }">
+			<c:set var="licznik" value="${licznik+1}"/>
 		<tr onmouseover="changeTrBg(this)" onmouseout="defaultTrBg(this)">
-			<td align="right"><c:out value="${count }"/></td>
+			<td align="right"><c:out value="${licznik }"/></td>
 			<td align="right"><a href="edit/${u.id }"><c:out value="${u.id }" /></a></td>
 			<td align="left"><a href="edit/${u.id }"><c:out value="${u.name }" /></a></td>
 			<td align="left"><a href="edit/${u.id }"><c:out value="${u.lastName }" /></a></td>
@@ -79,6 +81,10 @@ function defaultTrBg(row){
 
 <table width="1000" border="0" cellpadding="6" cellspacing="0" bgcolor="#ffddcc">
 	<tr>
+			<td width="300" align="left">
+  			<s:message code="info.page"/> ${currentPage} <s:message code="info.from"/> ${totalPages}
+  		</td>
+
 		<td align="right">
 
 			<c:if test="${currentPage > 1}">

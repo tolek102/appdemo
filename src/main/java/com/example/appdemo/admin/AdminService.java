@@ -20,4 +20,16 @@ public class AdminService implements AdminServiceInterface{
         Page<User> userList = adminRepository.findAll(pageable);
         return userList;
     }
+
+    @Override
+    public User findUserById(final int id) {
+        User user = adminRepository.findUserById(id);
+        return user;
+    }
+
+    @Override
+    public void updateUser(final int id, final int nrRoli, final int activity) {
+        adminRepository.updateActivationUser(activity, id);
+        adminRepository.updateRoleUser(nrRoli, id);
+    }
 }
