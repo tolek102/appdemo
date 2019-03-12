@@ -2,7 +2,6 @@ package com.example.appdemo.User;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -50,9 +49,4 @@ public class UserService implements UserServiceInterface {
 
     }
 
-    @Override
-    public List<User> findAll() {
-        List<User> userList= userRepository.findAll();
-        return userList;
-    }
 }
