@@ -32,7 +32,7 @@ public class ProfilController {
         User user = userService.findUserByEmail(username);
         int roleNr = user.getRoles().iterator().next().getId();
 
-        user.setRoleNr(roleNr);
+        user.setNrRoli(roleNr);
         model.addAttribute("user", user);
 
         return "profil";

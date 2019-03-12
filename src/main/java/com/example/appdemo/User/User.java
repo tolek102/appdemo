@@ -46,7 +46,7 @@ public class User {
     private String operationType;
 
     @Transient
-    private int roleNr;
+    private int nrRoli;
 
     @Transient
     private String newPassword;
