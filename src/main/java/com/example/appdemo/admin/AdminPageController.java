@@ -1,5 +1,9 @@
 package com.example.appdemo.admin;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -17,8 +21,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.appdemo.User.User;
+import com.example.appdemo.utilities.UserUtilities;
 
 @Controller
 public class AdminPageController {
@@ -103,6 +110,38 @@ public class AdminPageController {
         model.addAttribute("searchWord", searchWord);
         model.addAttribute("userList", userList);
         return "admin/usersearch";
+    }
+
+    @GET
+    @RequestMapping(value = "/admin/users/importusers")
+    @Secured(value = "ROLE_ADMIN")
+    public String showUploadPageFromXML(Model model) {
+        return "/admin/importusers";
+    }
+
+    @POST
+    @RequestMapping(value = "/admin/users/upload")
+    @Secured(value = "ROLE_ADMIN")
+    public String importUsersFromXml(@RequestParam("filename")MultipartFile mFile) {
+        String uploadDir = System.getProperty("user.dir") + "/uploads";
+        File file;
+        try {
+            file = new File(uploadDir);
+            if(!file.exists()) {
+                file.mkdir();
+            }
+            Path fileAndPath = Paths.get(uploadDir, mFile.getOriginalFilename());
+            Files.write(fileAndPath, mFile.getBytes());
+            file = new File(fileAndPath.toString());
+            List<User> userList = UserUtilities.usersDataLoader(file);
+            for (User u : userList) {
+                System.out.println(u.getEmail() + " > " + u.getName());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "redirect:/admin/users/1";
     }
 
     private Page<User> getAllUsersPageable(int page, boolean search, String param) {
