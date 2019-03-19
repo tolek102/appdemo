@@ -1,5 +1,7 @@
 package com.example.appdemo.admin;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,5 +33,11 @@ public class AdminService implements AdminServiceInterface{
     public void updateUser(final int id, final int nrRoli, final int activity) {
         adminRepository.updateActivationUser(activity, id);
         adminRepository.updateRoleUser(nrRoli, id);
+    }
+
+    @Override
+    public Page<User> findAllSearch(final String param, final Pageable pageable) {
+        Page<User> userList = adminRepository.findAllSearch(param, pageable);
+        return userList;
     }
 }
