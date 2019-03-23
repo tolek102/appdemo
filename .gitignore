@@ -2,3 +2,5 @@
 *.iml
 target
 uploads/
+Dockerfile
+docker-compose.yml
